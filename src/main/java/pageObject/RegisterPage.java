@@ -1,12 +1,7 @@
 package pageObject;
 
-import com.google.gson.annotations.Until;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.Condition;
 
 import static junit.framework.TestCase.assertEquals;
 
@@ -60,7 +55,6 @@ public class RegisterPage {
 
     // Метод нажатия на кнопку "Зарегистрироваться"
     public void registerButtonClick() {
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(registerButton));
         driver.findElement(registerButton).click();
     }
 

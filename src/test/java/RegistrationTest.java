@@ -15,6 +15,8 @@ import pageObject.RegisterPage;
 import pageObject.StellarBurgerHomePage;
 import user.User;
 
+import java.util.concurrent.TimeUnit;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 
 public class RegistrationTest {
@@ -28,6 +30,7 @@ public class RegistrationTest {
     public void setUp () {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         registerPage = new RegisterPage(driver);
         stellarBurgerHomePage = new StellarBurgerHomePage(driver);
         stellarBurgerHomePage.openHomePage();
@@ -61,9 +64,8 @@ public class RegistrationTest {
         registerPage.registerLinkClick();
         registerPage.setRegisterData(user.getName(), user.getEmail(), user.getPassword());
         registerPage.registerButtonClick();
-        //MatcherAssert.assertThat(loginPage.getEnterTitleText(), equalTo("Вход"));
+        MatcherAssert.assertThat(loginPage.getEnterTitleText(), equalTo("Вход"));
         loginPage.logInUser(user);
         Assert.assertTrue(profilePage.profileButtonIsEnabled());
     }
-
 }

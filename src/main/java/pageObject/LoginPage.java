@@ -4,8 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import user.User;
 
-import static junit.framework.TestCase.assertEquals;
-
 public class LoginPage {
 
     private WebDriver driver;
@@ -32,7 +30,6 @@ public class LoginPage {
         this.driver = driver;
     }
 
-
     // Метод получения текста в заголовке
     public String getEnterTitleText() {
         return driver.findElement(enterTitle).getText();
@@ -46,7 +43,7 @@ public class LoginPage {
         driver.findElement(passwordInput).sendKeys(password);
     }
 
-    public void setlogInData(String email, String password) {
+    public void setLogInData(String email, String password) {
         driver.findElement(emailInput).sendKeys(email);
         driver.findElement(passwordInput).sendKeys(password);
     }
@@ -63,5 +60,6 @@ public class LoginPage {
         setEmail(user.getEmail());
         setPassword(user.getPassword());
         loginButtonClick();
+        personalAccountButtonClick();
     }
 }
