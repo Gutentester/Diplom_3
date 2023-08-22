@@ -8,12 +8,12 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import pageObject.LoginPage;
 import pageObject.ProfilePage;
 import pageObject.RegisterPage;
 import pageObject.StellarBurgerHomePage;
 import user.User;
+import webdriver.WebdriverSetup;
 
 import java.util.concurrent.TimeUnit;
 
@@ -22,15 +22,14 @@ import static org.hamcrest.CoreMatchers.equalTo;
 public class RegistrationTest {
     private WebDriver driver;
     User user;
-    Faker faker;
     StellarBurgerHomePage stellarBurgerHomePage;
     RegisterPage registerPage;
 
     @Before
     public void setUp () {
-        driver = new ChromeDriver();
+        driver = WebdriverSetup.getBrowser();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(WebdriverSetup.WEBDRIVER_WAIT_TIME, TimeUnit.SECONDS);
         registerPage = new RegisterPage(driver);
         stellarBurgerHomePage = new StellarBurgerHomePage(driver);
         stellarBurgerHomePage.openHomePage();

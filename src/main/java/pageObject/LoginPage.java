@@ -21,10 +21,13 @@ public class LoginPage {
     private final By loginButton = By.xpath(".//button[text()='Войти']");
 
     // Ссылка "Восстановить пароль"
-    private final By passwordRecoveryButton = By.xpath(".//a[text()='Восстановить пароль']");
+    private final By passwordRecoveryLink = By.xpath(".//a[text()='Восстановить пароль']");
 
-    //Кнопка "Личный кабинет"
+    // Кнопка "Личный кабинет"
     private final By personalAccountButton = By.xpath(".//p[text()='Личный Кабинет']");
+
+    // Кнопка "Конструктор"
+    private final By constructorButton = By.xpath(".//p[text()='Конструктор']");
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
@@ -34,6 +37,7 @@ public class LoginPage {
     public String getEnterTitleText() {
         return driver.findElement(enterTitle).getText();
     }
+
 
     public void setEmail(String email) {
         driver.findElement(emailInput).sendKeys(email);
@@ -54,6 +58,14 @@ public class LoginPage {
 
     public void personalAccountButtonClick() {
         driver.findElement(personalAccountButton).click();
+    }
+
+    public void passwordRecoveryLinkClick() {
+        driver.findElement(passwordRecoveryLink).click();
+    }
+
+    public void constructorButtonClick() {
+        driver.findElement(constructorButton).click();
     }
 
     public void logInUser(User user) {

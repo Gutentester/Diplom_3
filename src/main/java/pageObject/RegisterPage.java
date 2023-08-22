@@ -30,17 +30,14 @@ public class RegisterPage {
     // Заголовок "Вход" на форме авторизации
     private By titleEnter = By.xpath("//h2[.='Вход']");
 
+    // Ссылка "Войти"
+    private final By loginLink = By.className("Auth_link__1fOlj");
 
+    // Драйвер
     public RegisterPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    // Метод проверки текста в заголовке
-    public void assertTitleEnterText(String text) {
-        String actualTitle = driver.findElement(titleEnter).getText();
-        String expectedTitle = text;
-        assertEquals("Текст заголовка отличается от ожидаемого", actualTitle, expectedTitle);
-    }
 
     // Метод получения текста ошибки некорректного пароля
     public String getInvalidPasswordText() {
@@ -65,15 +62,8 @@ public class RegisterPage {
         driver.findElement(passwordInput).sendKeys(password);
     }
 
-    public void setName(String name) {
-        driver.findElement(nameInput).sendKeys(name);
-    }
-
-    public void setEmail(String email) {
-        driver.findElement(emailInput).sendKeys(email);
-    }
-
-    public void setPassword(String password) {
-        driver.findElement(passwordInput).sendKeys(password);
+    // Метод для клика на ссылку "Войти"
+    public void loginLinkClick() {
+        driver.findElement(loginLink).click();
     }
 }

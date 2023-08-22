@@ -36,7 +36,10 @@ public class StellarBurgerHomePage {
     private final By fillingsButton = By.xpath(".//span[text()='Начинки']");
 
     // Кнопка "Начинки" активна
-    private final By btnFillingsIsCurrent = By.xpath(".//div[(contains(@class, 'tab_tab_type_current__2BEPc')) and (contains(span/text(),'Начинки'))]");
+    private final By fillingsButtonIsActive = By.xpath(".//div[(contains(@class, 'tab_tab_type_current__2BEPc')) and (contains(span/text(),'Начинки'))]");
+
+    // Заголовок "Соберите бургер"
+    private final By createBurgerTitle = By.xpath(".//h1[text()='Соберите бургер']");
 
     // Конструктор класса
     public StellarBurgerHomePage(WebDriver driver) {
@@ -76,6 +79,20 @@ public class StellarBurgerHomePage {
 
     public void fillingsButtonClick() {
         driver.findElement(fillingsButton).click();
+    }
+
+    public boolean bunsButtonIsActive() {
+        return driver.findElement(bunsButtonIsActive).isEnabled();
+    }
+    public boolean saucesButtonIsActive() {
+        return driver.findElement(saucesButtonIsActive).isEnabled();
+    }
+    public boolean fillingsButtonIsActive() {
+        return driver.findElement(fillingsButtonIsActive).isEnabled();
+    }
+
+    public String getCreateBurgerTitleText() {
+        return driver.findElement(createBurgerTitle).getText();
     }
 
 
