@@ -16,16 +16,17 @@ public class ConstructorPageTest {
 
     @Before
     public void setUp() {
-        driver = WebdriverSetup.getBrowser();
+        driver = WebdriverSetup.getBrowser("Chrome");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        StellarBurgerHomePage stellarBurgerHomePage = new StellarBurgerHomePage(driver);
+        stellarBurgerHomePage = new StellarBurgerHomePage(driver);
         stellarBurgerHomePage.openHomePage();
     }
 
     @Test
     @DisplayName("Кликаем по вкладке Булки, проверяем, что она активна")
     public void bunsTabSelect() {
+        stellarBurgerHomePage.fillingsButtonClick();
         stellarBurgerHomePage.bunsButtonClick();
         Assert.assertTrue(stellarBurgerHomePage.bunsButtonIsActive());
     }

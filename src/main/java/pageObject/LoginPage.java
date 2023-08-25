@@ -38,36 +38,43 @@ public class LoginPage {
         return driver.findElement(enterTitle).getText();
     }
 
-
+    // Метод ввода email в поле Email
     public void setEmail(String email) {
         driver.findElement(emailInput).sendKeys(email);
     }
 
+    // Метод ввода пароля в поле Password
     public void setPassword(String password) {
         driver.findElement(passwordInput).sendKeys(password);
     }
 
+    // Метод ввода логина и пароля на форме авторизации
     public void setLogInData(String email, String password) {
         driver.findElement(emailInput).sendKeys(email);
         driver.findElement(passwordInput).sendKeys(password);
     }
 
+    // Метод для клика по кнопке "Войти"
     public void loginButtonClick() {
         driver.findElement(loginButton).click();
     }
 
+    // Метод для клика по кнопке "Личный кабинет"
     public void personalAccountButtonClick() {
         driver.findElement(personalAccountButton).click();
     }
 
+    // Метод для клика по ссылке "Восстановить пароль"
     public void passwordRecoveryLinkClick() {
         driver.findElement(passwordRecoveryLink).click();
     }
 
+    // Метод для клика по кнопке "Конструктор"
     public void constructorButtonClick() {
         driver.findElement(constructorButton).click();
     }
 
+    // Метод авторизации юзера. Учетные данные берутся у заданного юзера. Выполняется переход на страницу профиля.
     public void logInUser(User user) {
         setEmail(user.getEmail());
         setPassword(user.getPassword());

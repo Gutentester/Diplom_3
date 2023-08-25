@@ -16,11 +16,13 @@ public class ProfilePage {
     public ProfilePage(WebDriver driver) {
         this.driver = driver;
     }
+
     // Метод для нажатия на кнопку "Выход"
     public void clickExitButton() {
         driver.findElement(exitButton).click();
     }
 
+    // Метод проверки того, что кнопка "Профиль" активна
     public boolean profileButtonIsEnabled() {
         return driver.findElement(profileButton).isEnabled();
     }

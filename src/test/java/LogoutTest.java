@@ -11,6 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pageObject.LoginPage;
 import pageObject.ProfilePage;
+import pageObject.RegisterPage;
 import pageObject.StellarBurgerHomePage;
 import user.User;
 
@@ -25,6 +26,7 @@ public class LogoutTest {
     StellarBurgerHomePage stellarBurgerHomePage;
     LoginPage loginPage;
     ProfilePage profilePage;
+    RegisterPage registerPage;
 
     @Before
     public void setUp() {
@@ -34,6 +36,7 @@ public class LogoutTest {
         loginPage = new LoginPage(driver);
         profilePage = new ProfilePage(driver);
         stellarBurgerHomePage = new StellarBurgerHomePage(driver);
+        registerPage = new RegisterPage(driver);
         stellarBurgerHomePage.openHomePage();
         user = FakeUser.fakeUser();
     }
@@ -48,10 +51,12 @@ public class LogoutTest {
     @DisplayName("Выход из аккаунта через личный кабинет")
     public void logoutFromPersonalAccount() {
         stellarBurgerHomePage.personalAccountButtonClick();
+        registerPage.registerLinkClick();
+        registerPage.setRegisterData(user.getName(), user.getEmail(), user.getPassword());
+        registerPage.registerButtonClick();
+        MatcherAssert.assertThat(loginPage.getEnterTitleText(), equalTo("Вход"));
         loginPage.logInUser(user);
         profilePage.clickExitButton();
         MatcherAssert.assertThat(loginPage.getEnterTitleText(), equalTo("Вход"));
     }
-
-
 }

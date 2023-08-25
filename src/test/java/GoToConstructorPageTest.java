@@ -19,7 +19,7 @@ public class GoToConstructorPageTest {
 
     @Before
     public void setUp () {
-        driver = WebdriverSetup.getBrowser();
+        driver = WebdriverSetup.getBrowser("Yandex");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(WebdriverSetup.WEBDRIVER_WAIT_TIME, TimeUnit.SECONDS);
         loginPage = new LoginPage(driver);
@@ -32,15 +32,15 @@ public class GoToConstructorPageTest {
     public void goToConstructorPageByConstructorButton() {
         stellarBurgerHomePage.personalAccountButtonClick();
         loginPage.constructorButtonClick();
-        MatcherAssert.assertThat(stellarBurgerHomePage.getCreateBurgerTitleText(), equalTo("СОберите бургер"));
+        MatcherAssert.assertThat(stellarBurgerHomePage.getCreateBurgerTitleText(), equalTo("Соберите бургер"));
     }
 
     @Test
-    @DisplayName("Переход к конструктору по кнопке Конструктор")
+    @DisplayName("Переход к конструктору по клику на логотип")
     public void goToConstructorPageByLogo() {
         stellarBurgerHomePage.personalAccountButtonClick();
         stellarBurgerHomePage.logoClick();
-        MatcherAssert.assertThat(stellarBurgerHomePage.getCreateBurgerTitleText(), equalTo("СОберите бургер"));
+        MatcherAssert.assertThat(stellarBurgerHomePage.getCreateBurgerTitleText(), equalTo("Соберите бургер"));
     }
 
     @After

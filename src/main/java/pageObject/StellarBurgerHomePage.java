@@ -61,39 +61,48 @@ public class StellarBurgerHomePage {
         driver.findElement(logInButton).click();
     }
 
+    // Метод для нажатия на логотип сайта
     public void logoClick() {
         driver.findElement(logo).click();
     }
 
+    // Метод для нажатия на кнопку "Конструктор"
     public void constructorButtonClick() {
         driver.findElement(constructorButton).click();
     }
 
+    // Метод для нажатия на кнопку "Булки"
     public void bunsButtonClick() {
         driver.findElement(bunsButton).click();
     }
 
+    // Метод для нажатия на кнопку "Соусы"
     public void saucesButtonClick() {
         driver.findElement(saucesButton).click();
     }
 
+    // Метод для нажатия на кнопку "Начинки"
     public void fillingsButtonClick() {
         driver.findElement(fillingsButton).click();
     }
 
+    // Метод проверки того, что кнопка "Булки" активна
     public boolean bunsButtonIsActive() {
         return driver.findElement(bunsButtonIsActive).isEnabled();
     }
+
+    // Метод проверки того, что кнопка "Соусы" активна
     public boolean saucesButtonIsActive() {
         return driver.findElement(saucesButtonIsActive).isEnabled();
     }
+
+    // Метод проверки того, что кнопка "Начинки" активна
     public boolean fillingsButtonIsActive() {
         return driver.findElement(fillingsButtonIsActive).isEnabled();
     }
 
+    // Метод получения текста заголовка на странице конструктора
     public String getCreateBurgerTitleText() {
         return driver.findElement(createBurgerTitle).getText();
     }
-
-
 }

@@ -3,8 +3,6 @@ package pageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import static junit.framework.TestCase.assertEquals;
-
 public class RegisterPage {
 
     WebDriver driver;
@@ -55,7 +53,7 @@ public class RegisterPage {
         driver.findElement(registerButton).click();
     }
 
-    // Метод для ввода данных регистрации
+    // Метод для ввода данных при регистрации пользователя
     public void setRegisterData(String name, String email, String password) {
         driver.findElement(nameInput).sendKeys(name);
         driver.findElement(emailInput).sendKeys(email);

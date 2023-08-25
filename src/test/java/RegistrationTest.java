@@ -1,5 +1,4 @@
 import api.API;
-import com.github.javafaker.Faker;
 import faker.FakeUser;
 import io.qameta.allure.junit4.DisplayName;
 import org.hamcrest.MatcherAssert;
@@ -27,7 +26,7 @@ public class RegistrationTest {
 
     @Before
     public void setUp () {
-        driver = WebdriverSetup.getBrowser();
+        driver = WebdriverSetup.getBrowser("Chrome");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(WebdriverSetup.WEBDRIVER_WAIT_TIME, TimeUnit.SECONDS);
         registerPage = new RegisterPage(driver);
@@ -49,7 +48,6 @@ public class RegistrationTest {
         registerPage.registerLinkClick();
         registerPage.setRegisterData(user.getName(), user.getEmail(), user.getPassword());
         registerPage.registerButtonClick();
-
         MatcherAssert.assertThat(registerPage.getInvalidPasswordText(), equalTo("Некорректный пароль"));
     }
 
